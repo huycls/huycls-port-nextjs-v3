@@ -52,3 +52,28 @@
     width: 100%;
   }
 }
+
+.terminal-border {
+  border-style: dashed;
+  border-width: 2px;
+  position: relative;
+}
+
+.terminal-border::before,
+.terminal-border::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  left: 0;
+  border-top: 2px dashed currentColor;
+  opacity: 0.3;
+}
+
+.terminal-border::before {
+  top: -2px;
+}
+
+.terminal-border::after {
+  bottom: -2px;
+}

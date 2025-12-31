@@ -11,7 +11,7 @@ const LoadingScreen = () => {
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 bg-white"
+      className="fixed inset-0 z-100 bg-white"
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{ duration: 0.5, delay: 1 }}
