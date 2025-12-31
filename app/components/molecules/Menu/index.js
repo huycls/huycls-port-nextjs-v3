@@ -21,11 +21,25 @@ const menuItems = [
   },
 ];
 
-const Menu = ({ className = "", ...props }) => {
-  const [currentSection, setCurrentSection] = useState("#home");
+const Menu = ({
+  className = "",
+  currentSection: externalCurrentSection,
+  onSectionChange,
+  ...props
+}) => {
+  const [currentSection, setCurrentSection] = useState(
+    externalCurrentSection || "#home"
+  );
   const [indicatorStyle, setIndicatorStyle] = useState({ width: 0, left: 0 });
   const itemRefs = useRef({});
   const ulRef = useRef(null);
+
+  // Sync với external currentSection nếu có
+  useEffect(() => {
+    if (externalCurrentSection !== undefined) {
+      setCurrentSection(externalCurrentSection);
+    }
+  }, [externalCurrentSection]);
 
   const updateIndicator = (href) => {
     const itemRef = itemRefs.current[href];
@@ -62,7 +76,14 @@ const Menu = ({ className = "", ...props }) => {
   const handleClick = (section) => {
     setCurrentSection(section);
     updateIndicator(section);
-    window.location.href = `#${section}`;
+
+    // Update URL hash
+    window.location.hash = section;
+
+    // Notify parent component
+    if (onSectionChange) {
+      onSectionChange(section);
+    }
   };
 
   return (
