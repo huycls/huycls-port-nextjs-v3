@@ -8,7 +8,9 @@ import HeroSection from "./components/organisms/HeroSection";
 import GooeyNav from "./components/molecules/GooeyNav";
 import LightRays from "./components/molecules/LightRay";
 import Projects from "./components/templates/Projects";
-import HomeSection from "./components/templates/Home";
+import Works from "./components/templates/Works";
+import Contact from "./components/templates/Contact";
+import HomeSection from "./components/templates/home";
 
 export default function Home() {
   const [currentSection, setCurrentSection] = useState("#home");
@@ -36,29 +38,9 @@ export default function Home() {
       case "#projects":
         return <Projects />;
       case "#works":
-        return (
-          <section
-            id="works"
-            className="py-20">
-            <div className="container mx-auto">
-              <h1 className="text-4xl font-bold text-center text-white">
-                Works
-              </h1>
-            </div>
-          </section>
-        );
+        return <Works />;
       case "#contact":
-        return (
-          <section
-            id="contact"
-            className="py-20">
-            <div className="container mx-auto">
-              <h1 className="text-4xl font-bold text-center text-white">
-                Contact
-              </h1>
-            </div>
-          </section>
-        );
+        return <Contact />;
       default:
         return <HomeSection />;
     }

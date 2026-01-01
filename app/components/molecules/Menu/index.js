@@ -88,33 +88,36 @@ const Menu = ({
 
   return (
     <nav
-      className="max-[1540px] pr-20 mx-auto fixed inset-0 z-10 h-20 px-4"
+      className="max-[1540px] pr-4 sm:pr-10 md:pr-20 mx-auto fixed inset-x-0 top-0 z-10 h-16 sm:h-20 px-2 sm:px-4"
       {...props}>
-      <div className="flex items-center justify-end pt-10">
-        <ul
-          ref={ulRef}
-          className={`flex text-white py-1.5 gap-4 relative`}>
-          <span
-            className="menu-indicator"
-            style={{
-              width: `${indicatorStyle.width}px`,
-              left: `${indicatorStyle.left}px`,
-            }}
-          />
-          {menuItems.map((item) => (
-            <li key={item.href}>
-              <Link
-                ref={(el) => (itemRefs.current[item.href] = el)}
-                href={item.href}
-                onClick={() => handleClick(item.href)}
-                className={`relative py-2 text-lg px-6 rounded-t-xl z-10 transition-colors duration-300 ${
-                  currentSection === item.href ? "text-[#333333]" : ""
-                }`}>
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <div className="flex items-center justify-center sm:justify-end pt-4 sm:pt-10 w-full">
+        {/* Scrollable container for mobile */}
+        <div className="overflow-x-auto scrollbar-none max-w-full">
+          <ul
+            ref={ulRef}
+            className="flex text-white py-1.5 gap-1 sm:gap-4 relative whitespace-nowrap">
+            <span
+              className="menu-indicator"
+              style={{
+                width: `${indicatorStyle.width}px`,
+                left: `${indicatorStyle.left}px`,
+              }}
+            />
+            {menuItems.map((item) => (
+              <li key={item.href} className="shrink-0">
+                <Link
+                  ref={(el) => (itemRefs.current[item.href] = el)}
+                  href={item.href}
+                  onClick={() => handleClick(item.href)}
+                  className={`relative py-1.5 sm:py-2 text-sm sm:text-lg px-3 sm:px-6 rounded-t-xl z-10 transition-colors duration-300 ${
+                    currentSection === item.href ? "text-[#333333]" : ""
+                  }`}>
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </nav>
   );

@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body
         className={`font-poppins antialiased relative min-h-screen bg-linear-to-b from-black via-[#002520] to-[#006154]`}>
-        <div className="absolute top-0 left-0 w-full h-full">
+        <div className="absolute z-0 top-0 left-0 w-full h-full">
           <LightRays
             raysOrigin="top-center"
             raysColor="#00ffff"
@@ -46,7 +46,7 @@ export default function RootLayout({ children }) {
           />
         </div>
         <MainLayout>
-          <section className="w-full h-screen lg:pt-20 pb-10 py-10 px-10 mx-auto">
+          <section className="z-10 w-full h-screen lg:pt-20 lg:pb-10 pb-4 pt-13 px-4 lg:px-10 mx-auto">
             <SectionBorder className="w-full h-full">{children}</SectionBorder>
           </section>
         </MainLayout>
