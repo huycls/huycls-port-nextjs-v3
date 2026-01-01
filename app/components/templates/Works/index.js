@@ -36,7 +36,7 @@ const workExperienceData = [
 const WorkItem = ({ work, isActive, onClick }) => {
   return (
     <motion.div
-      className={`flex items-center gap-2 cursor-pointer group px-3 sm:px-4 py-2 rounded-lg border transition-all duration-300 shrink-0 ${
+      className={`flex items-center gap-2 cursor-pointer group px-3 lg:px-4 py-2 rounded-lg border transition-all duration-300 shrink-0 lg:shrink lg:w-full ${
         isActive
           ? "border-amber-400 bg-amber-400/10"
           : "border-gray-700 hover:border-gray-500"
@@ -54,7 +54,7 @@ const WorkItem = ({ work, isActive, onClick }) => {
       />
 
       {/* Work info */}
-      <div className="flex flex-col">
+      <div className="flex flex-col min-w-0">
         <span
           className={`font-mono text-xs sm:text-sm transition-colors duration-300 ${
             isActive ? "text-amber-400" : "text-cyan-400"
@@ -62,7 +62,7 @@ const WorkItem = ({ work, isActive, onClick }) => {
           {work.period}
         </span>
         <span
-          className={`text-xs sm:text-sm transition-colors duration-300 whitespace-nowrap ${
+          className={`text-xs sm:text-sm transition-colors duration-300 whitespace-nowrap lg:whitespace-normal ${
             isActive ? "text-white" : "text-gray-300 group-hover:text-white"
           }`}>
           {work.company}
@@ -162,15 +162,15 @@ const Works = () => {
           <span className="text-white"> EXPERIENCE</span>
         </motion.h2>
 
-        {/* Main Content - Responsive Layout */}
-        <div className="flex-1 flex flex-col gap-4 min-h-0">
-          {/* Work Tabs - Horizontal on top */}
+        {/* Mobile: Vertical layout, Desktop: Two columns */}
+        <div className="flex-1 flex flex-col lg:flex-row gap-4 lg:gap-8 min-h-0">
+          {/* Work Tabs - Horizontal on mobile, Vertical on desktop */}
           <motion.div
-            className="shrink-0 overflow-x-auto scrollbar-thin pb-2"
+            className="shrink-0 lg:w-48 overflow-x-auto lg:overflow-x-visible lg:overflow-y-auto scrollbar-thin pb-2 lg:pb-0 lg:pr-6 lg:border-r lg:border-dashed lg:border-gray-700"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}>
-            <div className="flex gap-3">
+            <div className="flex lg:flex-col gap-3 lg:gap-2">
               {workExperienceData.map((work, index) => (
                 <motion.div
                   key={work.id}

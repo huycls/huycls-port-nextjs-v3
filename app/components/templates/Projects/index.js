@@ -137,7 +137,7 @@ const projectsData = [
 const ProjectItem = ({ project, isActive, onClick }) => {
   return (
     <motion.div
-      className={`flex items-center gap-2 cursor-pointer group px-4 py-2 rounded-lg border transition-all duration-300 shrink-0 ${
+      className={`flex items-center gap-2 cursor-pointer group px-3 lg:px-4 py-2 rounded-lg border transition-all duration-300 shrink-0 lg:shrink lg:w-full ${
         isActive
           ? "border-amber-400 bg-amber-400/10"
           : "border-gray-700 hover:border-gray-500"
@@ -155,7 +155,7 @@ const ProjectItem = ({ project, isActive, onClick }) => {
       />
 
       {/* Project info */}
-      <div className="flex flex-col">
+      <div className="flex flex-col min-w-0">
         <span
           className={`font-medium text-sm transition-colors duration-300 ${
             isActive
@@ -164,7 +164,7 @@ const ProjectItem = ({ project, isActive, onClick }) => {
           }`}>
           {project.name}
         </span>
-        <span className="text-gray-400 text-xs whitespace-nowrap">
+        <span className="text-gray-400 text-xs whitespace-nowrap lg:whitespace-normal lg:line-clamp-1">
           {project.category}
         </span>
       </div>
@@ -265,14 +265,15 @@ const Projects = () => {
         </motion.h2>
 
         {/* Main Content */}
-        <div className="flex-1 flex flex-col gap-4 min-h-0">
-          {/* Project Tabs - Horizontal */}
+        {/* Mobile: Vertical layout, Desktop: Two columns */}
+        <div className="flex-1 flex flex-col lg:flex-row gap-4 lg:gap-8 min-h-0">
+          {/* Project Tabs - Horizontal on mobile, Vertical on desktop */}
           <motion.div
-            className="shrink-0 overflow-x-auto scrollbar-thin pb-2"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
+            className="shrink-0 lg:w-56 overflow-x-auto lg:overflow-x-visible lg:overflow-y-auto scrollbar-thin pb-2 lg:pb-0 lg:pr-6 lg:border-r lg:border-dashed lg:border-gray-700"
+            initial={{ opacity: 0, y: -20, x: 0 }}
+            animate={{ opacity: 1, y: 0, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}>
-            <div className="flex gap-3">
+            <div className="flex lg:flex-col gap-3 lg:gap-2">
               {projectsData.map((project, index) => (
                 <motion.div
                   key={project.id}

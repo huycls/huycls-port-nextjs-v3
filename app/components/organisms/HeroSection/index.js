@@ -86,7 +86,7 @@ const HeroSection = () => {
   };
   return (
     <div className="w-full h-full overflow-y-auto scrollbar-thin">
-      <div className="flex overflow-hidden justify-between px-4 sm:px-8 md:px-16 lg:px-40 py-6 md:py-10 items-center w-full h-full">
+      <div className="flex overflow-hidden justify-between px-4 sm:px-8 md:px-16 max-w-4xl mx-auto py-6 md:py-10 items-center w-full h-full">
         <div className="w-full flex flex-col justify-between h-full text-white">
           {/* Main content area */}
           <div className="flex flex-col md:flex-row gap-6 md:gap-10 lg:gap-20 items-center md:items-start">

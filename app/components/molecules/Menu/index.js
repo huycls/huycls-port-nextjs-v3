@@ -90,8 +90,7 @@ const Menu = ({
     <nav
       className="max-[1540px] pr-4 sm:pr-10 md:pr-20 mx-auto fixed inset-x-0 top-0 z-10 h-16 sm:h-20 px-2 sm:px-4"
       {...props}>
-      <div className="flex items-center justify-center sm:justify-end pt-4 sm:pt-10 w-full">
-        {/* Scrollable container for mobile */}
+      <div className="flex items-center justify-center sm:justify-end pt-4 sm:pt-3 lg:pt-10 w-full">
         <div className="overflow-x-auto scrollbar-none max-w-full">
           <ul
             ref={ulRef}
